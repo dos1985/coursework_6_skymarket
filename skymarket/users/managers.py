@@ -1,6 +1,3 @@
-from django.contrib.auth.models import (
-    BaseUserManager
-)
 from django.contrib.auth.models import BaseUserManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -46,3 +43,4 @@ class UserManager(BaseUserManager):
 
         user.save(using=self._db)
         return user
+

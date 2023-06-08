@@ -1,16 +1,18 @@
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser, UserManager
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from users.managers import UserRoles, UserManager
+from .managers import UserRoles, UserManager
+
 
 
 class User(AbstractBaseUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = PhoneNumberField(max_length=20)
-    email = models.EmailField(unique=True, max_length=255)
+    email = models.EmailField(unique=True)
     role = models.CharField(choices=UserRoles.choices, default=UserRoles.USER, max_length=10)
     image = models.ImageField(upload_to='avatars', null=True, blank=True)
+
 
     @property
     def is_superuser(self):
@@ -26,6 +28,8 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_admin
 
+
+
     # эта константа определяет поле для логина пользователя
     USERNAME_FIELD = 'email'
 
@@ -35,7 +39,7 @@ class User(AbstractBaseUser):
 
     # для корректной работы нам также необходимо
     # переопределить менеджер модели пользователя
-    objects = UserManager
+    objects = UserManager()
 
     @property
     def is_admin(self):
@@ -44,3 +48,4 @@ class User(AbstractBaseUser):
     @property
     def is_user(self):
         return self.role == UserRoles.USER
+
