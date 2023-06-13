@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/frontend_react" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/market_postgres" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/skymarket" vcs="Git" />
   </component>
 </project>
