@@ -8,8 +8,15 @@ User = get_user_model()
 
 
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
-    pass
-
+    class Meta:
+        model = User
+        fields = "__all__"
 
 class CurrentUserSerializer(serializers.ModelSerializer):
     pass
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"

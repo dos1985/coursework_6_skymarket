@@ -12,6 +12,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     role = models.CharField(choices=UserRoles.choices, default=UserRoles.USER, max_length=10)
     image = models.ImageField(upload_to='avatars', null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
 
     @property
